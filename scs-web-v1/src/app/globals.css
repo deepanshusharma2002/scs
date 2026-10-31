@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+
+  --color-brand-50: #fff4ef;
+  --color-brand-100: #ffe5d9;
+  --color-brand-200: #ffc7ad;
+  --color-brand-300: #ff9f75;
+  --color-brand-400: #ff6b35;
+  --color-brand-500: #e94f1c;
+  --color-brand-600: #c93d10;
+  --color-brand-700: #a2300e;
+  --color-brand-800: #7d2810;
+  --color-brand-900: #5c1f0f;
+
+  --color-ink-50: #f7f6f4;
+  --color-ink-100: #eeece8;
+  --color-ink-200: #dcd8d2;
+  --color-ink-300: #b8b2a9;
+  --color-ink-400: #8c857b;
+  --color-ink-500: #67615a;
+  --color-ink-600: #4b4741;
+  --color-ink-700: #34312d;
+  --color-ink-800: #22201d;
+  --color-ink-900: #151413;
+  --color-ink-950: #0a0a0a;
+
+  --color-ink: #141312;
+
+  --text-mega: clamp(3rem, 1.4rem + 6.4vw, 7rem);
+  --text-mega--line-height: 0.98;
+  --text-mega--letter-spacing: -0.045em;
+  --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.035em;
+  --text-headline: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
+  --text-headline--line-height: 1.1;
+  --text-headline--letter-spacing: -0.025em;
+  --text-title: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --text-title--line-height: 1.2;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-dash: dash 2.4s linear infinite;
+  --animate-shine: shine 3.5s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes marquee-y {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes grow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes popup-in {
+    from {
+      opacity: 0;
+      scale: 0.94;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  @keyframes travel {
+    from {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    to {
+      offset-distance: 100%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -24;
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-120%) skewX(-20deg);
+    }
+    60%,
+    100% {
+      transform: translateX(220%) skewX(-20deg);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(2.2);
+      opacity: 0;
+    }
+  }
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility section-y {
+  padding-block: 5rem;
+  @media (width >= 48rem) {
+    padding-block: 7rem;
+  }
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brand-500);
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility bg-grid-light {
+  background-image:
+    linear-gradient(to right, rgb(10 10 10 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(10 10 10 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(rgb(10 10 10 / 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility bg-ember {
+  background-color: #070707;
+  background-image:
+    radial-gradient(90% 70% at 100% 100%, rgb(233 79 28 / 0.85) 0%, rgb(122 42 12 / 0.55) 35%, transparent 70%),
+    radial-gradient(60% 50% at 0% 0%, rgb(58 20 6 / 0.9) 0%, transparent 70%),
+    linear-gradient(115deg, #050505 0%, #0d0705 45%, #2a0f05 80%, #5a1f08 100%);
+}
+
+@utility bg-glow {
+  background-image: radial-gradient(50% 50% at 50% 50%, rgb(233 79 28 / 0.18) 0%, transparent 70%);
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(100deg, #e94f1c 0%, #ff6b35 45%, #ff9f75 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand-500 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
