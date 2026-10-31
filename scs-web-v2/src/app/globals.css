@@ -1,0 +1,317 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+
+  --color-paper: #f6f8fc;
+
+  --color-navy-50: #f3f5fa;
+  --color-navy-100: #e6eaf3;
+  --color-navy-200: #cdd3e4;
+  --color-navy-300: #a3adca;
+  --color-navy-400: #66749e;
+  --color-navy-500: #4a5a8a;
+  --color-navy-600: #2e3f73;
+  --color-navy-700: #1d2d5e;
+  --color-navy-800: #13204a;
+  --color-navy-900: #0b1530;
+  --color-navy-950: #070e22;
+
+  --color-azure-50: #eef3ff;
+  --color-azure-100: #dce6ff;
+  --color-azure-200: #b9ccff;
+  --color-azure-300: #8aa9ff;
+  --color-azure-400: #5c86ff;
+  --color-azure-500: #2f6bff;
+  --color-azure-600: #1f52e0;
+  --color-azure-700: #1a42b3;
+  --color-azure-800: #17378c;
+  --color-azure-900: #142e6e;
+
+  --color-signal-50: #fff4ef;
+  --color-signal-100: #ffe5d9;
+  --color-signal-400: #ff6b35;
+  --color-signal-500: #e94f1c;
+  --color-signal-600: #c93d10;
+  --color-signal-700: #a2300e;
+
+  --text-hero: clamp(2.5rem, 1.7rem + 2.6vw, 4rem);
+  --text-hero--line-height: 1.02;
+  --text-hero--letter-spacing: -0.04em;
+  --text-display: clamp(2.25rem, 1.5rem + 3vw, 4rem);
+  --text-display--line-height: 1.06;
+  --text-display--letter-spacing: -0.035em;
+  --text-headline: clamp(1.85rem, 1.35rem + 1.9vw, 3rem);
+  --text-headline--line-height: 1.1;
+  --text-headline--letter-spacing: -0.03em;
+  --text-title: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem);
+  --text-title--line-height: 1.25;
+  --text-title--letter-spacing: -0.015em;
+
+  --shadow-card: 0 1px 2px rgb(11 21 48 / 0.04), 0 8px 24px -12px rgb(11 21 48 / 0.12);
+  --shadow-float: 0 1px 2px rgb(11 21 48 / 0.06), 0 30px 60px -24px rgb(11 21 48 / 0.28);
+
+  --animate-marquee: marquee 45s linear infinite;
+  --animate-ping-soft: ping-soft 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-flow: flow 1.6s linear infinite;
+  --animate-blink: blink 1s step-end infinite;
+  --animate-slide-up: slide-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fade-in: fade-in 0.25s ease-out both;
+  --animate-panel-in: panel-in 0.22s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-draw: draw 1.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+  --animate-grow-x: grow-x 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes grow-x {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes ping-soft {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/* Referenced from inline styles (SVG mockups), so they live outside @theme to always be emitted. */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes travel {
+  from {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 84rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility section-y {
+  padding-block: 5rem;
+  @media (width >= 48rem) {
+    padding-block: 7.5rem;
+  }
+}
+
+/* Mono, numbered label that sits above every section title. */
+@utility kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-azure-600);
+}
+
+@utility bg-blueprint {
+  background-image:
+    linear-gradient(to right, rgb(11 21 48 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(11 21 48 / 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility bg-blueprint-dark {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility bg-dot-grid {
+  background-image: radial-gradient(rgb(11 21 48 / 0.14) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+@utility bg-sky {
+  background-image:
+    radial-gradient(60% 60% at 85% 0%, rgb(47 107 255 / 0.14) 0%, transparent 70%),
+    radial-gradient(45% 50% at 0% 30%, rgb(34 211 238 / 0.12) 0%, transparent 70%);
+}
+
+@utility bg-deep {
+  background-color: var(--color-navy-950);
+  background-image:
+    radial-gradient(70% 60% at 100% 0%, rgb(47 107 255 / 0.35) 0%, transparent 65%),
+    radial-gradient(50% 60% at 0% 100%, rgb(34 211 238 / 0.18) 0%, transparent 70%);
+}
+
+@utility text-accent {
+  background-image: linear-gradient(95deg, var(--color-azure-600) 0%, var(--color-azure-500) 45%, #0ea5c6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-accent-light {
+  background-image: linear-gradient(95deg, #8aa9ff 0%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-white font-sans text-navy-900 antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-azure-500 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-azure-500;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
